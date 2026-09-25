@@ -13,7 +13,7 @@
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
 [![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
 
-[Features](#-key-features) • [Tech Stack](#-tech-stack) • [Screenshots](#-screenshots) • [Setup](#-installation--setup) • [Login](#-demo-credentials) • [Architecture](#-architecture)
+[Features](#-key-features) • [Tech Stack](#-tech-stack) • [Setup](#-installation--setup) • [Login](#-demo-credentials) • [Architecture](#-architecture)
 
 </div>
 
@@ -145,13 +145,6 @@ A sophisticated role-based architecture where every user sees only what they nee
 </div>
 
 ---
-
-## 📸 Screenshots
-
-<div align="center">
-
-
-
 
 ## 🚀 Installation & Setup
 
@@ -366,7 +359,7 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 [![GitHub](https://img.shields.io/badge/GitHub-haseeb--linux-181717?style=for-the-badge&logo=github)](https://github.com/haseeb-linux)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhammad_Haseeb-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/muhammad-haseeb-451264432)
-[![Email](https://img.shields.io/badge/Email-bc250401284mha@vu.edu.pk-EA4335?style=for-the-badge&logo=gmail)](mailto:haseebarif112234@gmail.com)
+[![Email](https://img.shields.io/badge/Email-haseebarif112234@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:haseebarif112234@gmail.com)
 
 *Computer Science Student · Virtual University of Pakistan*
 
