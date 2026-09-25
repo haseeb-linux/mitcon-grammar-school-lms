@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block title %}Announcements - {{ campus.name }}{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+  <div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2><i class="bi bi-megaphone-fill"></i> Announcements</h2>
+        <p class="text-muted">{{ campus.name }} [{{ campus.code }}]</p>
+      </div>
+      <a href="{{ url_for('principal.dashboard') }}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i> Back
+      </a>
+    </div>
+
+    <div class="motivation-banner mb-4">
+      <div class="motivation-icon">
+        <i class="bi bi-stars"></i>
+      </div>
+      <div class="motivation-text">
+        <h4>Education is the Key to Success</h4>
+        <p>Hard work today, success tomorrow. Keep learning, keep growing!</p>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-md-4">
+        <div class="quote-card">
+          <i class="bi bi-quote"></i>
+          <p>Do work hard with dedication and honesty</p>
+          <small>Daily Reminder</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="quote-card">
+          <i class="bi bi-quote"></i>
+          <p>Education is the most powerful weapon you can use to change the world</p>
+          <small>Nelson Mandela</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="quote-card">
+          <i class="bi bi-quote"></i>
+          <p>Do your diary work daily. Consistency is the key to mastery.</p>
+          <small>Principal's Message</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-panel">
+      <h5 class="mb-3"><i class="bi bi-list-ul"></i> Recent Announcements</h5>
+
+      {% if announcements %}
+        {% for a in announcements %}
+        <div class="announcement-item mb-3 p-3" style="border-left: 4px solid var(--primary); background: var(--bg); border-radius: 8px;">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h5 class="mb-2">{{ a.title }}</h5>
+              <p class="text-muted mb-2">{{ a.content }}</p>
+              <small class="text-muted">
+                <i class="bi bi-clock"></i> {{ a.date.strftime('%Y-%m-%d %H:%M') }}
+              </small>
+            </div>
+            {% if a.priority == 'high' %}
+              <span class="badge bg-danger">High</span>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="text-center py-5">
+          <i class="bi bi-megaphone" style="font-size: 3rem; color: #ccc;"></i>
+          <p class="text-muted mt-3">No announcements yet.</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="row g-3 mt-4">
+      <div class="col-md-6">
+        <div class="reminder-card">
+          <i class="bi bi-journal-check"></i>
+          <h5>Daily Diary Work</h5>
+          <p>Complete your diary work every day. It builds discipline and improves memory.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="reminder-card">
+          <i class="bi bi-trophy-fill"></i>
+          <h5>Hard Work Pays Off</h5>
+          <p>Success doesn't come from what you do occasionally, it comes from what you do consistently.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.motivation-banner {
+  background: linear-gradient(135deg, #07522E, #0B6E3F);
+  color: white;
+  padding: 30px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.motivation-icon {
+  font-size: 3rem;
+  color: #D4AF37;
+}
+
+.motivation-text h4 {
+  color: white;
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+}
+
+.motivation-text p {
+  margin: 0;
+  color: rgba(255,255,255,0.9);
+}
+
+.quote-card {
+  background: white;
+  border: 1px solid #E0E4EA;
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+}
+
+.quote-card i.bi-quote {
+  color: #D4AF37;
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.quote-card p {
+  font-style: italic;
+  color: #1A1A1A;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.quote-card small {
+  color: #6B7280;
+  font-weight: 600;
+}
+
+.reminder-card {
+  background: #f0f9f4;
+  border-left: 4px solid #0B6E3F;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.reminder-card i {
+  color: #0B6E3F;
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.reminder-card h5 {
+  color: #07522E;
+  margin-bottom: 8px;
+}
+
+.reminder-card p {
+  color: #6B7280;
+  margin: 0;
+  font-size: 0.9rem;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Profile - {{ school_name }}{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card-panel">
+          <div class="panel-header">
+            <h4><i class="bi bi-person-circle"></i> My Profile</h4>
+          </div>
+          <div class="panel-body">
+            <div class="profile-info">
+              <div class="profile-row">
+                <span class="profile-label">Full Name:</span>
+                <span class="profile-value">{{ current_user.full_name }}</span>
+              </div>
+              <div class="profile-row">
+                <span class="profile-label">Username:</span>
+                <span class="profile-value">{{ current_user.username }}</span>
+              </div>
+              <div class="profile-row">
+                <span class="profile-label">Email:</span>
+                <span class="profile-value">{{ current_user.email or 'Not set' }}</span>
+              </div>
+              <div class="profile-row">
+                <span class="profile-label">Role:</span>
+                <span class="badge role-badge role-{{ current_user.role }}">{{ current_user.role|upper }}</span>
+              </div>
+              <div class="profile-row">
+                <span class="profile-label">Phone:</span>
+                <span class="profile-value">{{ current_user.phone or 'Not set' }}</span>
+              </div>
+              <div class="profile-row">
+                <span class="profile-label">Member Since:</span>
+                <span class="profile-value">{{ current_user.created_at.strftime('%B %Y') }}</span>
+              </div>
+            </div>
+            <a href="{{ url_for('auth.change_password') }}" class="btn btn-primary w-100 mt-3">
+              <i class="bi bi-key"></i> Change Password
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

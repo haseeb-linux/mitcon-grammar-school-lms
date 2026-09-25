@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block title %}Announcements - {{ school_name }}{% endblock %}
+
+{% block content %}
+
+<section class="page-hero text-center">
+  <h1><i class="bi bi-megaphone-fill"></i> School Announcements</h1>
+  <p>Latest news, events, and updates from {{ school_name }}</p>
+</section>
+
+<div class="container" style="padding: 40px 15px;">
+
+  <div class="motivation-banner mb-5">
+    <div class="motivation-icon">
+      <i class="bi bi-stars"></i>
+    </div>
+    <div class="motivation-text">
+      <h4>Education is the Key to Success</h4>
+      <p>Hard work today, success tomorrow. Keep learning, keep growing!</p>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-5">
+    <div class="col-md-4">
+      <div class="quote-card">
+        <i class="bi bi-quote"></i>
+        <p>Do work hard with dedication and honesty</p>
+        <small>Daily Reminder</small>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="quote-card">
+        <i class="bi bi-quote"></i>
+        <p>Education is the most powerful weapon you can use to change the world</p>
+        <small>Nelson Mandela</small>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="quote-card">
+        <i class="bi bi-quote"></i>
+        <p>Complete your diary work daily. Consistency is the key to mastery.</p>
+        <small>Principal's Message</small>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="mb-4"><i class="bi bi-list-ul"></i> Recent Announcements</h3>
+
+  {% if announcements %}
+    <div class="row g-3">
+      {% for a in announcements %}
+      <div class="col-md-6">
+        <div class="announcement-card">
+          <div class="announcement-header">
+            <h5>{{ a.title }}</h5>
+            {% if a.priority == 'high' %}
+              <span class="badge bg-danger">High</span>
+            {% elif a.priority == 'urgent' %}
+              <span class="badge bg-warning">Urgent</span>
+            {% endif %}
+          </div>
+          <p class="text-muted">{{ a.content }}</p>
+          <small class="text-muted">
+            <i class="bi bi-clock"></i> {{ a.date.strftime('%d %b %Y, %I:%M %p') }}
+          </small>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-5">
+      <i class="bi bi-megaphone" style="font-size: 4rem; color: #ccc;"></i>
+      <p class="text-muted mt-3">No announcements yet. Check back soon!</p>
+    </div>
+  {% endif %}
+
+  <div class="row g-3 mt-5">
+    <div class="col-md-6">
+      <div class="reminder-card">
+        <i class="bi bi-journal-check"></i>
+        <h5>Daily Diary Work</h5>
+        <p>Complete your diary work every day. It builds discipline and improves memory.</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="reminder-card">
+        <i class="bi bi-trophy-fill"></i>
+        <h5>Hard Work Pays Off</h5>
+        <p>Success doesn't come from what you do occasionally, it comes from what you do consistently.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+.motivation-banner {
+  background: linear-gradient(135deg, #07522E, #0B6E3F);
+  color: white;
+  padding: 30px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.motivation-icon { font-size: 3rem; color: #D4AF37; }
+.motivation-text h4 { color: white; margin: 0 0 6px; font-size: 1.5rem; }
+.motivation-text p { margin: 0; color: rgba(255,255,255,0.9); }
+
+.quote-card {
+  background: white;
+  border: 1px solid #E0E4EA;
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+}
+.quote-card i.bi-quote {
+  color: #D4AF37;
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 10px;
+}
+.quote-card p {
+  font-style: italic;
+  color: #1A1A1A;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+.quote-card small { color: #6B7280; font-weight: 600; }
+
+.announcement-card {
+  background: white;
+  border: 1px solid #E0E4EA;
+  border-left: 4px solid #0B6E3F;
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+}
+.announcement-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.announcement-header h5 { margin: 0; color: #07522E; font-size: 1.05rem; }
+
+.reminder-card {
+  background: #f0f9f4;
+  border-left: 4px solid #0B6E3F;
+  border-radius: 12px;
+  padding: 20px;
+}
+.reminder-card i {
+  color: #0B6E3F;
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+.reminder-card h5 { color: #07522E; margin-bottom: 8px; }
+.reminder-card p { color: #6B7280; margin: 0; font-size: 0.9rem; }
+</style>
+{% endblock %}

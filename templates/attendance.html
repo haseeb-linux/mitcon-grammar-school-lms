@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Attendance - {{ school_name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero text-center">
+  <h1><i class="bi bi-calendar-check"></i> Attendance Overview</h1>
+  <p>Campus-wise attendance summary</p>
+</section>
+
+<div class="container" style="padding: 40px 15px;">
+
+  <!-- Overall Stats -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-3">
+      <div class="stat-card">
+        <i class="bi bi-people-fill"></i>
+        <div class="stat-value">{{ total_students }}</div>
+        <div class="stat-label">Total Students</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="stat-card">
+        <i class="bi bi-check-circle-fill text-success"></i>
+        <div class="stat-value text-success">{{ present_count }}</div>
+        <div class="stat-label">Present Today</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="stat-card">
+        <i class="bi bi-x-circle-fill text-danger"></i>
+        <div class="stat-value text-danger">{{ absent_count }}</div>
+        <div class="stat-label">Absent Today</div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="stat-card">
+        <i class="bi bi-percent"></i>
+        <div class="stat-value">{{ attendance_pct }}%</div>
+        <div class="stat-label">Attendance Rate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campus-wise -->
+  <h4><i class="bi bi-buildings"></i> Campus-wise Attendance</h4>
+  <div class="row g-3 mt-3">
+    {% for c in campus_attendance %}
+    <div class="col-lg-6">
+      <div class="card-panel">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">{{ c.name }}</h5>
+          <span class="badge bg-primary">{{ c.code }}</span>
+        </div>
+        <div class="row g-2 mb-3">
+          <div class="col-4 text-center">
+            <strong class="d-block" style="font-size: 1.3rem; color: #0B6E3F;">{{ c.total }}</strong>
+            <small class="text-muted">Total</small>
+          </div>
+          <div class="col-4 text-center">
+            <strong class="d-block text-success" style="font-size: 1.3rem;">{{ c.present }}</strong>
+            <small class="text-muted">Present</small>
+          </div>
+          <div class="col-4 text-center">
+            <strong class="d-block text-danger" style="font-size: 1.3rem;">{{ c.absent }}</strong>
+            <small class="text-muted">Absent</small>
+          </div>
+        </div>
+        <div class="progress" style="height: 8px;">
+          <div class="progress-bar bg-success attendance-bar" data-pct="{{ c.pct }}"></div>
+        </div>
+        <small class="text-muted d-block mt-2">Attendance: <strong>{{ c.pct }}%</strong></small>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<script>
+  // Set progress bar width from data attribute (avoids Jinja in inline CSS)
+  document.querySelectorAll('.attendance-bar').forEach(function (bar) {
+    const pct = bar.getAttribute('data-pct');
+    if (pct) {
+      bar.style.width = pct + '%';
+    }
+  });
+</script>
+{% endblock %}

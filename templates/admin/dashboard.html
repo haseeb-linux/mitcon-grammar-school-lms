@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - {{ school_name }}{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2>Admin Dashboard</h2>
+        <p class="text-muted">Welcome back, {{ current_user.full_name }}</p>
+      </div>
+    </div>
+
+    <div class="row g-4 mb-4">
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <i class="bi bi-people-fill"></i>
+          <div class="stat-value">{{ stats.total_students }}</div>
+          <div class="stat-label">Students</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <i class="bi bi-person-workspace"></i>
+          <div class="stat-value">{{ stats.total_teachers }}</div>
+          <div class="stat-label">Teachers</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <i class="bi bi-book-fill"></i>
+          <div class="stat-value">{{ stats.total_classes }}</div>
+          <div class="stat-label">Classes</div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="stat-card">
+          <i class="bi bi-megaphone-fill"></i>
+          <div class="stat-value">{{ stats.total_announcements }}</div>
+          <div class="stat-label">Announcements</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-3">
+        <a href="{{ url_for('admin.students') }}" class="role-card role-student">
+          <i class="bi bi-people-fill"></i>
+          <h5>Students</h5>
+          <p>Manage student records</p>
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a href="{{ url_for('admin.teachers') }}" class="role-card role-teacher">
+          <i class="bi bi-person-workspace"></i>
+          <h5>Teachers</h5>
+          <p>Manage teacher records</p>
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a href="{{ url_for('admin.classes') }}" class="role-card role-admin">
+          <i class="bi bi-book-fill"></i>
+          <h5>Classes</h5>
+          <p>Manage classes & sections</p>
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a href="{{ url_for('admin.announcements') }}" class="role-card role-parent">
+          <i class="bi bi-megaphone-fill"></i>
+          <h5>Announcements</h5>
+          <p>Post school notices</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}Mobile App - {{ school_name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero text-center">
+  <h1><i class="bi bi-phone"></i> Mobile App</h1>
+  <p>Access {{ school_name }} from anywhere</p>
+</section>
+
+<div class="container" style="padding: 60px 15px;">
+
+  <div class="text-center mb-5">
+    <div class="app-icon-big">
+      <i class="bi bi-phone-fill"></i>
+    </div>
+    <h1 class="mt-4">App Coming Soon</h1>
+    <p class="text-muted" style="font-size: 1.15rem;">
+      We're building a powerful mobile app for parents and students.
+      Get instant access to diaries, results, attendance, and more — right from your phone!
+    </p>
+  </div>
+
+  <div class="row g-4 mt-5">
+    <div class="col-md-4">
+      <div class="feature-box">
+        <div class="feature-icon-circle">
+          <i class="bi bi-android2"></i>
+        </div>
+        <h5>Android</h5>
+        <p>Get notified when our Android app launches on Google Play Store.</p>
+        <button class="btn btn-outline-success w-100" disabled>
+          <i class="bi bi-google-play"></i> Coming Soon
+        </button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-box">
+        <div class="feature-icon-circle">
+          <i class="bi bi-apple"></i>
+        </div>
+        <h5>iOS</h5>
+        <p>Our iOS app will be available on the Apple App Store soon.</p>
+        <button class="btn btn-outline-success w-100" disabled>
+          <i class="bi bi-apple"></i> Coming Soon
+        </button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-box">
+        <div class="feature-icon-circle">
+          <i class="bi bi-globe"></i>
+        </div>
+        <h5>Web App (PWA)</h5>
+        <p>Install our website as a mobile app directly from your browser.</p>
+        <button class="btn btn-success w-100" disabled>
+          <i class="bi bi-download"></i> Coming Soon
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Preview -->
+  <div class="card-panel mt-5">
+    <h4 class="text-center mb-4"><i class="bi bi-stars"></i> What to Expect</h4>
+    <div class="row g-3">
+      <div class="col-md-3 text-center">
+        <i class="bi bi-journal-text" style="font-size: 2rem; color: #0B6E3F;"></i>
+        <p class="mt-2 mb-0"><strong>Live Diary</strong></p>
+      </div>
+      <div class="col-md-3 text-center">
+        <i class="bi bi-graph-up-arrow" style="font-size: 2rem; color: #0B6E3F;"></i>
+        <p class="mt-2 mb-0"><strong>Results</strong></p>
+      </div>
+      <div class="col-md-3 text-center">
+        <i class="bi bi-calendar-check" style="font-size: 2rem; color: #0B6E3F;"></i>
+        <p class="mt-2 mb-0"><strong>Attendance</strong></p>
+      </div>
+      <div class="col-md-3 text-center">
+        <i class="bi bi-bell-fill" style="font-size: 2rem; color: #0B6E3F;"></i>
+        <p class="mt-2 mb-0"><strong>Notifications</strong></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+.app-icon-big {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #07522E, #0B6E3F);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 4rem;
+  color: white;
+  box-shadow: 0 20px 50px rgba(11,110,63,0.3);
+}
+.feature-box {
+  background: white;
+  border: 1px solid #E0E4EA;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  height: 100%;
+}
+.feature-icon-circle {
+  width: 70px;
+  height: 70px;
+  background: #f0f9f4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 2rem;
+  color: #0B6E3F;
+}
+.feature-box h5 {
+  color: #07522E;
+  margin-bottom: 10px;
+}
+.feature-box p {
+  color: #6B7280;
+  font-size: 0.88rem;
+  min-height: 60px;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}Daily Diary - {{ school_name }}{% endblock %}
+
+{% block content %}
+<section class="page-hero text-center">
+  <h1><i class="bi bi-journal-text"></i> Daily Diary</h1>
+  <p>Live diary updates from all classes</p>
+</section>
+
+<div class="container" style="padding: 40px 15px;">
+
+  <!-- Campus Filter -->
+  <div class="card-panel mb-4">
+    <h5><i class="bi bi-funnel-fill"></i> Filter Diary</h5>
+    <form method="GET" action="{{ url_for('diary') }}" class="row g-3">
+      <div class="col-md-4">
+        <label class="form-label">Campus</label>
+        <select name="campus" class="form-select">
+          <option value="">All Campuses</option>
+          {% for c in campuses %}
+            <option value="{{ c.id }}" {% if selected_campus == c.id %}selected{% endif %}>
+              {{ c.name }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Class</label>
+        <select name="class" class="form-select">
+          <option value="">All Classes</option>
+          {% for c in class_list %}
+            <option value="{{ c }}" {% if selected_class == c %}selected{% endif %}>
+              {{ c }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-4 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary w-100">
+          <i class="bi bi-search"></i> Filter
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Diary Entries -->
+  {% if diaries %}
+    <div class="row g-3">
+      {% for d in diaries %}
+      <div class="col-lg-6">
+        <div class="diary-card">
+          <div class="diary-header">
+            <div>
+              <span class="badge bg-primary">{{ d.campus.code }}</span>
+              <span class="badge bg-success">{{ d.diary_class.name }}</span>
+              <span class="badge bg-warning text-dark">{{ d.diary_subject.name if d.diary_subject else 'General' }}</span>
+            </div>
+            <small class="text-muted">
+              <i class="bi bi-calendar"></i> {{ d.date.strftime('%d %b %Y') }}
+            </small>
+          </div>
+          <h5 class="mt-3">{{ d.title }}</h5>
+          <div class="diary-content">
+            {{ d.content }}
+          </div>
+          {% if d.diary_teacher %}
+          <div class="diary-footer">
+            <i class="bi bi-person-badge"></i> 
+            Teacher: {{ d.diary_teacher.user.full_name if d.diary_teacher.user else 'N/A' }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-5">
+      <i class="bi bi-journal-x" style="font-size: 4rem; color: #ccc;"></i>
+      <p class="text-muted mt-3">No diary entries yet.</p>
+    </div>
+  {% endif %}
+
+</div>
+
+<style>
+.diary-card {
+  background: white;
+  border: 1px solid #E0E4EA;
+  border-left: 4px solid #0B6E3F;
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+}
+.diary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #E0E4EA;
+}
+.diary-header .badge {
+  font-size: 0.7rem;
+  padding: 5px 10px;
+  margin-right: 4px;
+}
+.diary-content {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.88rem;
+  white-space: pre-line;
+  line-height: 1.7;
+}
+.diary-footer {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #E0E4EA;
+  font-size: 0.82rem;
+  color: #6B7280;
+}
+</style>
+{% endblock %}

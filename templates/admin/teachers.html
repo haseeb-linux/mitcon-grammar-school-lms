@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Teachers - Admin{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>All Teachers</h2>
+      <a href="{{ url_for('admin.dashboard') }}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i> Back to Dashboard
+      </a>
+    </div>
+
+    <div class="card-panel">
+      <div class="panel-body">
+        {% if teachers %}
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Qualification</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for t in teachers %}
+                <tr>
+                  <td><strong>{{ t.employee_id }}</strong></td>
+                  <td>{{ t.user.full_name if t.user else 'N/A' }}</td>
+                  <td>{{ t.subject_specialty or '-' }}</td>
+                  <td>{{ t.qualification or '-' }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <div class="text-center py-5">
+            <i class="bi bi-person-workspace" style="font-size: 3rem; color: #ccc;"></i>
+            <p class="text-muted mt-3">No teachers yet.</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
