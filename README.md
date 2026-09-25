@@ -150,26 +150,8 @@ A sophisticated role-based architecture where every user sees only what they nee
 
 <div align="center">
 
-### 🏠 Homepage
-![Homepage](screenshots/homepage.png)
 
-### 🔐 Login Page
-![Login](screenshots/login.png)
 
-### 👑 Super Admin Dashboard
-![Super Admin](screenshots/superadmin-dashboard.png)
-
-### 🎯 Principal Dashboard
-![Principal](screenshots/principal-dashboard.png)
-
-### 📖 Public Diary Page
-![Diary](screenshots/diary.png)
-
-</div>
-
-> 📌 **Note:** Add screenshots to `/screenshots` folder in the repository.
-
----
 
 ## 🚀 Installation & Setup
 
@@ -384,7 +366,7 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 [![GitHub](https://img.shields.io/badge/GitHub-haseeb--linux-181717?style=for-the-badge&logo=github)](https://github.com/haseeb-linux)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Muhammad_Haseeb-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/muhammad-haseeb-451264432)
-[![Email](https://img.shields.io/badge/Email-bc250401284mha@vu.edu.pk-EA4335?style=for-the-badge&logo=gmail)](mailto:bc250401284mha@vu.edu.pk)
+[![Email](https://img.shields.io/badge/Email-bc250401284mha@vu.edu.pk-EA4335?style=for-the-badge&logo=gmail)](mailto:haseebarif112234@gmail.com)
 
 *Computer Science Student · Virtual University of Pakistan*
 
